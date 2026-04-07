@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea: Mi Comunidad en Números - Colegio Escolaris</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2canvas para descargar como imagen -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* Paleta de colores Escolaris */
+        :root {
+            --orange-escolaris: #db6015;
+            --yellow-escolaris: #f7be00;
+            --blue-escolaris: #244b5a;
+            --red-escolaris: #993921;
+            --bg-light: #f0f8ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--blue-escolaris);
+            line-height: 1.6;
+        }
+
+        /* Estilos de inputs */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 0.5rem;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            color: #334155;
+            font-size: 1rem;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--orange-escolaris);
+            box-shadow: 0 0 0 3px rgba(219, 96, 21, 0.2);
+        }
+
+        /* Ocultar elementos al imprimir */
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none !important; }
+            .print-border { border: 1px solid #cbd5e1 !important; box-shadow: none !important; }
+            input { border: none !important; border-bottom: 1px solid black !important; border-radius: 0 !important; }
+            textarea { border: 1px solid black !important; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="capture-area" class="max-w-5xl mx-auto space-y-8 p-4 md:p-0 rounded-2xl">
+
+        <!-- Encabezado -->
+        <header class="bg-white rounded-2xl shadow-md p-8 print-border border-t-8" style="border-top-color: var(--orange-escolaris);">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div>
+                    <div class="inline-block bg-[#f0f8ff] px-4 py-1 rounded-full border border-[#244b5a] text-[#244b5a] font-bold text-sm mb-4">
+                        Colegio Escolaris 🎓
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-[#244b5a] flex items-center gap-3">
+                        📊 Mi Comunidad en Números
+                    </h1>
+                </div>
+                <div class="mt-4 md:mt-0 text-right flex flex-col gap-2 no-print" data-html2canvas-ignore="true">
+                    <button onclick="descargarImagen()" class="bg-[#db6015] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#c05210] transition shadow-md flex items-center gap-2 justify-center">
+                        🖼️ Descargar como Imagen (PNG)
+                    </button>
+                    <button onclick="window.print()" class="bg-[#244b5a] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#1a3642] transition shadow-md flex items-center gap-2 justify-center">
+                        🖨️ Imprimir / Guardar PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-[#fff9e6] border-l-4 border-[#f7be00] p-4 rounded-r-lg">
+            <div class="bg-[#fff9e6] border-l-4 border-[#f7be00] p-4 rounded-r-lg">
+                <p class="text-lg"><strong>Tema:</strong> Introducción a la demografía</p>
+                <p class="text-lg"><strong>Objetivo:</strong> Comprender qué es la demografía y cómo se estudia la población a partir de datos simples.</p>
+            </div>
+        </header>
+
+        <!-- Instrucciones (3 Columnas) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 no-print" data-html2canvas-ignore="true">
+            <!-- Bloque 1 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                <div class="text-4xl mb-3">🔎</div>
+                <h3 class="text-xl font-bold text-[#db6015] mb-2">1. ¿Qué haremos?</h3>
+                <p class="text-gray-600 text-sm">
+                    Investigar en casa o preguntar a familiares datos básicos sobre tu comunidad, colonia o barrio (puede ser por teléfono o entrevista virtual).
+                </p>
+            </div>
+
+            <!-- Bloque 2 -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                <div class="text-4xl mb-3">📝</div>
+                <h3 class="text-xl font-bold text-[#db6015] mb-2">2. ¿Cómo lo haremos?</h3>
+                <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                    <li>Recopilar la información en la tabla de abajo.</li>
+                    <li>Organizar los datos en una tabla sencilla o gráfico.</li>
+                    <li>Escribir 5 observaciones.</li>
+                    <li>Presentarlo como infografía o presentación.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3 -->
+            <div class="bg-[#fff5f5] rounded-xl shadow-sm p-6 border border-[#fed7d7] hover:shadow-md transition">
+                <div class="text-4xl mb-3">📤</div>
+                <h3 class="text-xl font-bold text-[#993921] mb-2">3. ¿Qué debo entregar?</h3>
+                <p class="text-gray-700 text-sm font-medium">
+                    Imagen del gráfico o tabla + las 5 observaciones. <br><br>
+                    <span class="font-normal text-gray-600">Puede ser una infografía (en Canva), una presentación en PowerPoint, o una fotografía clara si se hizo en papel.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Plantilla Interactiva -->
+        <main class="bg-white rounded-2xl shadow-md p-8 print-border">
+            <h2 class="text-2xl font-bold text-[#244b5a] mb-6 flex items-center gap-2">
+                📋 Plantilla para Recopilar Datos
+            </h2>
+            <p class="text-gray-600 mb-8">Puedes escribir directamente en los cuadros para usar esta página como tu borrador, o imprimirla para llenarla a mano.</p>
+
+            <div class="overflow-x-auto mb-10">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="p-4 bg-[#244b5a] text-white font-bold rounded-tl-lg w-1/2">Dato a investigar</th>
+                            <th class="p-4 bg-[#db6015] text-white font-bold rounded-tr-lg w-1/2">Respuesta del estudiante</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <td class="p-4 font-medium">¿Cuántas personas viven en tu hogar?</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Ej: 4 personas"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-4 font-medium">¿Cuántas personas aproximadamente viven en tu barrio? (estimación)</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Ej: 50 casas, aprox. 200 personas"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <td class="p-4 font-medium">¿Cuántos niños/as viven en tu hogar o colonia?</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Escribe cantidad"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-4 font-medium">¿Cuántos adultos mayores viven en tu hogar o colonia?</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Escribe cantidad"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <td class="p-4 font-medium">¿Cuántos hombres y cuántas mujeres hay en total?</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Hombres: ___, Mujeres: ___"></td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <td class="p-4 font-medium">¿Qué idioma(s) hablan en casa?</td>
+                            <td class="p-2"><input type="text" class="form-input" placeholder="Ej: Español, Kaqchikel, etc."></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 bg-gray-50">
+                            <td class="p-4 font-medium rounded-bl-lg">¿A qué se dedican las personas de tu hogar? (ocupaciones)</td>
+                            <td class="p-2 rounded-br-lg"><input type="text" class="form-input" placeholder="Ej: Maestro, Comerciante, Estudiante..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sección de Observaciones -->
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="text-3xl">💡</span>
+                    <h2 class="text-2xl font-bold text-[#244b5a]">Mis observaciones o conclusiones</h2>
+                </div>
+                <p class="text-gray-600 mb-6">Con base en los datos que anotaste arriba, escribe 5 conclusiones. (Por ejemplo: <em>"Noté que hay más niños que adultos mayores en mi cuadra"</em>).</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-[#f7be00] text-[#244b5a] flex items-center justify-center font-bold shrink-0 mt-1">1</div>
+                        <input type="text" class="form-input" placeholder="Escribe tu primera observación aquí...">
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-[#f7be00] text-[#244b5a] flex items-center justify-center font-bold shrink-0 mt-1">2</div>
+                        <input type="text" class="form-input" placeholder="Escribe tu segunda observación aquí...">
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-[#f7be00] text-[#244b5a] flex items-center justify-center font-bold shrink-0 mt-1">3</div>
+                        <input type="text" class="form-input" placeholder="Escribe tu tercera observación aquí...">
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-[#f7be00] text-[#244b5a] flex items-center justify-center font-bold shrink-0 mt-1">4</div>
+                        <input type="text" class="form-input" placeholder="Escribe tu cuarta observación aquí...">
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-[#f7be00] text-[#244b5a] flex items-center justify-center font-bold shrink-0 mt-1">5</div>
+                        <input type="text" class="form-input" placeholder="Escribe tu quinta observación aquí...">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mensaje Motivacional -->
+        <div class="text-center pb-8 no-print" data-html2canvas-ignore="true">
+            <p class="text-lg font-bold text-[#db6015]">¡Excelente trabajo recopilando datos! 🚀</p>
+            <p class="text-gray-500">Ahora usa esta información para crear tu infografía o gráfico final.</p>
+        </div>
+
+    </div>
+
+    <!-- Script para generar y descargar la imagen PNG -->
+    <script>
+        function descargarImagen() {
+            const captureArea = document.getElementById('capture-area');
+            const btnDescarga = document.querySelector('button[onclick="descargarImagen()"]');
+            
+            // 1. Sincronizar los valores de los inputs para que html2canvas capture lo que el alumno escribió
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.setAttribute('value', input.value);
+            });
+
+            // 2. Cambiar el texto del botón temporalmente
+            const textoOriginal = btnDescarga.innerHTML;
+            btnDescarga.innerHTML = '⏳ Generando imagen...';
+
+            // 3. Tomar la captura
+            html2canvas(captureArea, {
+                backgroundColor: '#f0f8ff', // Fondo alineado con el diseño
+                scale: 2, // El doble de resolución para que el texto sea nítido
+                useCORS: true // Asegura que los emojis se rendericen bien
+            }).then(canvas => {
+                // Restaurar el botón
+                btnDescarga.innerHTML = textoOriginal;
+
+                // 4. Forzar la descarga
+                const enlace = document.createElement('a');
+                enlace.download = 'Mi_Comunidad_Escolaris.png';
+                enlace.href = canvas.toDataURL('image/png');
+                document.body.appendChild(enlace);
+                enlace.click();
+                document.body.removeChild(enlace);
+            }).catch(err => {
+                console.error('Error al generar la imagen:', err);
+                btnDescarga.innerHTML = textoOriginal;
+                alert('Hubo un error al descargar. Por favor, intenta de nuevo.');
+            });
+        }
+    </script>
+</body>
+</html>
